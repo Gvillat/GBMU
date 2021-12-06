@@ -3,6 +3,7 @@ pub mod execute;
 pub mod interrupts;
 pub mod redraw;
 pub mod run;
+pub mod saver_interrupts;
 pub mod waker;
 
 pub use error::Error;

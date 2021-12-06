@@ -1,5 +1,6 @@
 use super::memory::Memory;
 use num_enum::TryFromPrimitive;
+use serde::{Deserialize, Serialize};
 use shared::interrupts::Interrupt;
 use shared::Error;
 use shared::Interrupts as Registered;
@@ -9,7 +10,7 @@ use shared::Interrupts as Registered;
 /// requested: IE Interrupt flag
 
 /// Any set bits in the IF register are only requesting an interrupt to be executed.
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct Interrupts {
     is_interrupted: bool,
     enabled: bool,

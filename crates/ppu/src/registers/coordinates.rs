@@ -1,9 +1,10 @@
 use enum_iterator::IntoEnumIterator;
 use num_enum::{IntoPrimitive, TryFromPrimitive};
 use std::fmt;
+use serde::{Serialize, Deserialize};
 
 const MAP_ROW_LEN: u16 = 32;
-#[derive(Debug, Default, Copy, Clone, PartialEq)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Coordinates {
     yscroll: u8,
     xscroll: u8,

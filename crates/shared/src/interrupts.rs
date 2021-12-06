@@ -2,6 +2,7 @@
 use crate::Error;
 use modular_bitfield::{bitfield, specifiers::B3};
 use num_enum::{IntoPrimitive, TryFromPrimitive};
+use serde::{Deserialize, Serialize};
 
 pub mod interface {
     use std::cell::RefCell;
@@ -10,7 +11,7 @@ pub mod interface {
 }
 
 #[bitfield]
-#[derive(Debug, Default, Clone, Copy)]
+#[derive(Debug, Default, Clone, Copy, Serialize, Deserialize)]
 pub struct Interrupts {
     vblank: bool,
     lcd: bool,

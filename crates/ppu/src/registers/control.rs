@@ -1,3 +1,4 @@
+use serde::{Serialize, Deserialize};
 /// LCDC is the main LCD Control register.
 /// Its bits toggle what elements are displayed on the screen, and how.
 
@@ -11,7 +12,7 @@
 /// 1    OBJ enable                     0=Off, 1=On
 /// 0    BG and Window enable/priority  0=Off, 1=On
 
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Serialize, Deserialize)]
 #[allow(dead_code)]
 pub struct Control {
     pub lcd_enabled: bool,

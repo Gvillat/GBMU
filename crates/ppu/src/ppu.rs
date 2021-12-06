@@ -3,6 +3,7 @@ use crate::fifo::Fifo;
 use crate::registers::{Mode, Registers};
 use shared::Interrupts;
 use shared::{Error, Interrupt};
+use serde::{Serialize, Deserialize};
 
 pub const VRAM_START: u16 = 0x8000;
 pub const OAM_TABLE: usize = 0xA0;
@@ -10,7 +11,7 @@ pub const OAM_START: u16 = 0xFE00;
 pub const FRAME_WIDTH: usize = 160;
 pub const FRAME_HEIGHT: usize = 144;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Ppu {
     vram: Vec<u8>,
     oam: Vec<u8>,

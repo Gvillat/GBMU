@@ -9,7 +9,9 @@ pub(crate) mod jump;
 pub(crate) mod load;
 pub(crate) mod logical;
 pub(crate) mod rotation;
+pub mod saver;
 pub(crate) mod shift;
+use serde::{Deserialize, Serialize};
 
 pub use area::{Bits16, Bits8, Flag};
 pub(crate) use arithmetic::Arithmetic;
@@ -24,7 +26,7 @@ pub(crate) use logical::Logical;
 pub(crate) use rotation::Rotation;
 pub(crate) use shift::Shift;
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct Registers {
     pub(crate) a: u8,
     pub(crate) f: Flags,

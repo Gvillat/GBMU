@@ -1,10 +1,11 @@
 use crate::MemoryBus;
+use serde::{Deserialize, Serialize};
 use shared::Error;
 use std::convert::AsRef;
 
 const WRAM_SIZE: usize = 8193;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Ram {
     data: Vec<u8>,
 }

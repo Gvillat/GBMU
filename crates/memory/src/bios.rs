@@ -1,11 +1,12 @@
 use crate::MemoryBus;
+use serde::{Deserialize, Serialize};
 use shared::Error;
 use std::convert::AsRef;
 use std::fs;
 use std::path::PathBuf;
 use std::str;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Bios {
     data: Vec<u8>,
 }

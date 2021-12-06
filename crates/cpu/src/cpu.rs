@@ -1,8 +1,10 @@
 use crate::registers::Registers;
 use memory::Memory;
+use serde::Serialize;
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Serialize)]
 pub struct Cpu {
+    #[serde(skip)]
     memory: Memory,
     pub registers: Registers,
     pub(crate) halt: bool,

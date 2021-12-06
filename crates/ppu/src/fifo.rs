@@ -1,7 +1,8 @@
 use shared::Error;
 use std::collections::VecDeque;
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Fifo {
     queue: VecDeque<u8>,
 }

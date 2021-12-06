@@ -23,6 +23,8 @@ pub enum MenuMsg {
     Instruction,
     Second,
     Breakpoint,
+    Save,
+    Load,
 }
 
 impl Menu {
@@ -34,10 +36,12 @@ impl Menu {
         let second = Button::new(status.clone(), MenuMsg::Second);
         let breakpoint = Button::new(status.clone(), MenuMsg::Breakpoint);
         let breakpoints = VecDeque::new();
+        let save = Button::new(status.clone(), MenuMsg::Save);
+        let load = Button::new(status.clone(), MenuMsg::Load);
 
         Self {
             left: vec![],
-            right: vec![breakpoint, second, frame, line, instruction, tick],
+            right: vec![breakpoint, second, frame, line, instruction, tick, save, load],
             breakpoints,
             status,
         }
@@ -104,7 +108,7 @@ impl Menu {
             .push(left)
             .push(space)
             .push(right)
-            .padding(5)
+            .padding(6)
             .into()
     }
 }

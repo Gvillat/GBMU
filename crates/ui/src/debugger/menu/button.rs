@@ -42,6 +42,14 @@ impl Button {
                 status.second();
             }
             MenuMsg::Breakpoint => {}
+            MenuMsg::Save => {
+                println!("SAVE BUTTON START");
+                status.mode(Mode::Save);
+            }
+            MenuMsg::Load => {
+                println!("LOAD BUTTON START");
+                status.mode(Mode::Load);
+            }
         }
     }
 

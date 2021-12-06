@@ -8,6 +8,9 @@ pub mod ppu;
 pub mod registers;
 pub mod runner;
 pub(crate) mod transfert;
+pub mod saver_fifo;
+pub mod saver_registers;
+pub mod saver_ppu;
 
 pub use crate::interface::Ppu;
 pub use crate::registers::{Coordinates, Field, Registers};

@@ -1,5 +1,6 @@
 pub mod apu;
 pub mod interface;
+pub mod saver_apu;
 
 pub use interface::Apu;
 

@@ -1,7 +1,8 @@
 use crate::Area;
 use apu::Apu;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct IO {
     apu: Apu,
     joypad: u8,

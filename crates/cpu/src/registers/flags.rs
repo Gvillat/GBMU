@@ -1,8 +1,9 @@
 use super::{Bus, Flag};
 use modular_bitfield::{bitfield, specifiers::B4};
+use serde::{Deserialize, Serialize};
 
 #[bitfield]
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Flags {
     pub(crate) z: bool,
     pub(crate) n: bool,

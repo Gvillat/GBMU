@@ -1,4 +1,5 @@
 use crate::colors::Color;
+use serde::{Serialize, Deserialize};
 
 /// BGP - BG Palette Data (R/W) - Non CGB Mode Only
 /// Bit   Name
@@ -14,7 +15,7 @@ use crate::colors::Color;
 /// 3       Black
 
 #[allow(dead_code)]
-#[derive(Debug, Default, Copy, Clone, PartialEq)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Monochrome {
     pub id0: Color,
     pub id1: Color,

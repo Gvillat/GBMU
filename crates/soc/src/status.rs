@@ -1,12 +1,18 @@
+extern crate nfd;
 use super::mode::Mode;
 use shared::{Finished, Redraw};
 use std::time::Instant;
+use serde::Serialize;
+// use std::fs::File;
+// use chrono::Utc;
+use nfd::Response;
 
 /// The status struct controls the different execution modes of the soc.
 /// The code here is really critical.
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Serialize)]
 pub struct Status {
     cpu: cpu::Cpu,
+    #[serde(skip)]
     mode: Mode,
     pub redraw: Redraw,
     lines: u32,
@@ -81,6 +87,20 @@ impl Status {
                     self.mode.idle();
                     self.redraw.update(Redraw::Debugger);
                 }
+                (_, Mode::Save) => {
+                    println!("[SOC] Save finished");
+                    self.mode.idle();
+                    self.save();
+                    // println!("Register serialized: {:?}", self.saver);
+                    // self.redraw.update(Redraw::Debugger);
+                }
+                (_, Mode::Load) => {
+                    println!("[SOC] Load finished");
+                    self.mode.idle();
+                    self.load();
+                    // println!("Register serialized: {:?}", self.saver);
+                    // self.redraw.update(Redraw::All);
+                }
                 (Finished::Cpu(cycles), Mode::Instruction) => {
                     println!("[SOC] Instruction finished");
                     self.mode.idle();
@@ -135,6 +155,27 @@ impl Status {
     pub fn add_line(&mut self) {
         self.lines += 1;
         self.ticks = 0;
+    }
+
+    pub fn save(&mut self) {
+        let result = nfd::open_pick_folder(Some("save/")).unwrap_or_else(|e| { panic!("{}",e); });
+
+        match result {
+            Response::Okay(file_path) => println!("File path = {:?}", file_path),
+            Response::Cancel => println!("User canceled"),
+            _ => (),
+        }
+        // let t
+        //
+        // imestamp = Utc::now().timestamp();
+        // let filename = format!("save/save_{}.txt", timestamp);
+        // println!("[SOC] serializing into file {}", filename);
+        // let file = File::create(filename).unwrap();
+        // serde_json::to_writer(file, &self.cpu).unwrap();
+    }
+
+    pub fn load(&mut self) {
+            println!("WIP");
     }
 
     pub fn reset_count(&mut self) {

@@ -9,6 +9,7 @@ pub enum Finished {
     Cpu(u8),
     Line(u16),
     Frame,
+    // Save,
     Error(Error),
     Nope,
 }
@@ -19,6 +20,7 @@ impl fmt::Display for Finished {
             Finished::Cpu(ticks) => write!(f, "Finished instruction. ticks: {}", *ticks),
             Finished::Line(ticks) => write!(f, "Finished line. ticks: {}", *ticks),
             Finished::Frame => write!(f, "Finished Frame."),
+            // Finished::Save => write!(f, "Finished Save."),
             Finished::Error(ticks) => write!(f, "Error: {}", *ticks),
             Finished::Nope => write!(f, "Processing"),
         }

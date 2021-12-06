@@ -1,4 +1,5 @@
 use std::time::Instant;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Mode {
     Tick,
@@ -8,6 +9,8 @@ pub enum Mode {
     Idle,
     Second(Instant),
     Breakpoint(u16),
+    Save,
+    Load,
 }
 
 impl Mode {

@@ -2,10 +2,11 @@ use shared::Interrupts;
 use std::cell::RefCell;
 use std::ops::{Deref, DerefMut};
 use std::rc::Rc;
+use serde::{Serialize, Deserialize};
 
 use crate::futures;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Ppu(Rc<RefCell<super::ppu::Ppu>>);
 
 impl Deref for Ppu {

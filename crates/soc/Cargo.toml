@@ -13,3 +13,7 @@ memory = { path = "../memory" }
 shared = { path = "../shared" }
 cpu = { path = "../cpu" }
 ppu = { path = "../ppu" }
+serde = { version = "1.0", features = ["derive", "rc"] }
+serde_json = "1.0.71"
+chrono = "0.4.19"
+nfd = "0.0.4"

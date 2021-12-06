@@ -1,5 +1,6 @@
 use std::cell::RefCell;
 use std::rc::Rc;
+use serde::Serialize;
 
 use super::mbc::{Cartridge, Mbc0, Mbc1, Mbc2, Mbc3, Mbc5};
 use crate::area::Area;
@@ -15,13 +16,17 @@ use crate::state::{self, State};
 use ppu::Ppu;
 use shared::Error;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Memory {
     pub(crate) state: state::State,
+    #[serde(skip)]
     pub(crate) bios: Bus,
+    #[serde(skip, default = "Rom::RomDefault")]
     pub(crate) rom: Rom,
+    #[serde(skip)]
     pub(crate) wram: Bus,
     pub(crate) ppu: Ppu,
+    #[serde(skip)]
     pub(crate) hram: Bus,
     pub(crate) io: IO,
     pub(crate) interrupts: Interrupts,

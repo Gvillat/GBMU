@@ -4,7 +4,11 @@ pub mod coordinates;
 
 pub use coordinates::{Coordinates, Field};
 use num_enum::TryFromPrimitive;
+use serde::{Serialize, Deserialize};
 mod palette;
+pub mod saver_control;
+pub mod saver_coordinates;
+pub mod saver_palette;
 
 pub use control::Control;
 pub use palette::Monochrome;
@@ -62,7 +66,7 @@ pub use palette::Monochrome;
 // ///         8.5.1 Bit7=0 - General Purpose DMA
 // ///         8.5.2 Bit7=1 - H-Blank DMA
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct Registers {
     pub control: Control,
 
@@ -181,7 +185,7 @@ impl Registers {
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Serialize, Deserialize)]
 pub enum Mode {
     Hblank(u16),
     Vblank,

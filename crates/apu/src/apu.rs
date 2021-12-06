@@ -1,8 +1,9 @@
+use serde::{Deserialize, Serialize};
 /// Audio Processing Unit
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Apu {
-    data: Vec<u8>,
+    pub data: Vec<u8>,
 }
 
 impl Apu {
